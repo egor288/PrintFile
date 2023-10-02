@@ -1,5 +1,5 @@
 #include <iostream>
-#include "source/string.cpp"
+#include "lib/string.cpp"
 #include "source/parser.cpp"
 #include "source/printing.cpp"
 
