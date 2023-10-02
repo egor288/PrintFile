@@ -43,8 +43,8 @@ class Stroka {
             return true;
         }
 
-        void printValue() {
-            std::cout << value;
+        char* getValue() {
+            return value;
         }
     private:
         char* value;

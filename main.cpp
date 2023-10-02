@@ -10,6 +10,8 @@ int main(int a, char** arg) {
     del.setValue(&sep);
     Stroka lines;
     Stroka delimetr;
+    Stroka filename;
+    filename.setValue("null");
     delimetr.setValue("--delimiter="); // теперь это метод setValue
     lines.setValue("--lines="); // теперь это метод setValue
 
@@ -19,7 +21,7 @@ int main(int a, char** arg) {
 */
 
 
-    for(int i = 0; i < a; i++) {
+    for(int i = 1; i < a; i++) {
         Stroka ar;
         ar.setValue(arg[i]);
         if(ar.compare("-l")) {
@@ -37,22 +39,34 @@ int main(int a, char** arg) {
         else if (delimetr.compare(ar.substr(0, 13))) {
             del.setValue(ar.substr(ar.find('=') + 1));
         }
-
+        else if(ar.find('.') != -1) {
+            filename.setValue(arg[i]);
+        }
+        else if((ar.compare("-h")) || (ar.compare("--help"))) {
+            std::cout << "Usage:\n-l, --lines=n print n lines from begin(end) of the file [optional]\n-t, --tail print n last lines from the file [optional]\n-d, --delimiter=c the character by which the end of the line is determined [optional] [\\n by default]\nThe file name and options are passed through command line arguments in the following format:\nPrintFile.exe [OPTION] filename";
+            return 0;
+        }
+        else {
+            std::cout << "Wrong arguments\nCheck -h or --help for help";
+            return 0;
+        }
     }
-    std::cout << revers << " " << len << " " ;
-    del.printValue();
 
+    if (!filename.compare("null")) {
+        std::ifstream file(filename.getValue()); // окрываем файл для чтения
+        if (file.is_open())
+        {
 
-    std::ifstream file(arg[a - 1]); // окрываем файл для чтения
-    if (file.is_open())
-    {
-
-        // while (std::getline(file, line))
-        // {
-        //     std::cout << line << std::endl;
-        // }
+            // while (std::getline(file, line))
+            // {
+            //     std::cout << line << std::endl;
+            // }
+        }
+        file.close();
+    }     // закрываем файл
+    else {
+        std::cout << "no filename find\nCheck -h or --help for help";
     }
-    file.close();     // закрываем файл
 
     return 0;
 }
