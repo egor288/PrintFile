@@ -1,7 +1,7 @@
 #include <iostream>
-#include "string.cpp"
-#include "parser.cpp"
-#include "printing.cpp"
+#include "source/string.cpp"
+#include "source/parser.cpp"
+#include "source/printing.cpp"
 
 
 int main(int a, char** arg) {
