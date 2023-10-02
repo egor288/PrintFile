@@ -7,6 +7,9 @@ int len(char* str1) {
 }
 
 class Stroka {
+    private:
+        char* value;
+        
     public:
 
         void setValue(char* str) {
@@ -46,7 +49,5 @@ class Stroka {
         char* getValue() {
             return value;
         }
-    private:
-        char* value;
 
 };
