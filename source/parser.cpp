@@ -7,17 +7,25 @@ int lenOf(char* str1) {
 }
 
 void pars(char** arg, int a, long &len, bool &revers, char &sep, Stroka &del, Stroka &filename) {
-    len = -1; //количество выводимых строк
-    revers = false; //с начала False, с конца True
-    sep = '\n'; //символ определения конца строки
+    /*
+    функция принимает аргументы из строки вызова и ссылки на переменные, в которые надо записать аргументы
+    len - количество строк, которые надо вывести
+    revers - bool с конца или с начала выводить файл
+    sep - символ разделения строки 
+    del - то же, что сеп, только типа Stroka
+    filename - имя файла для вывода
+    */
+    len = -1; 
+    revers = false; 
+    sep = '\n'; 
     del.setValue(&sep);
     Stroka lines;
     Stroka delimetr;
     filename.setValue("null");
-    delimetr.setValue("--delimiter="); // теперь это метод setValue
-    lines.setValue("--lines="); // теперь это метод setValue
+    delimetr.setValue("--delimiter="); 
+    lines.setValue("--lines="); 
 
-
+    // распознование аргументов
     for(int i = 1; i < a; i++) {
         Stroka ar;
         ar.setValue(arg[i]);

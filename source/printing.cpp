@@ -2,6 +2,7 @@
 #include <fstream>
 
 void printFile(long &len, bool &revers, char &sep, Stroka &del, Stroka &filename) {
+    
     char* line = new char [64];
     int ansLen;
     try{
